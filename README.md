@@ -7,5 +7,5 @@ Othello Eclipse project ISY
 
 ### To DO
 
-[ ] player strategy
+- [ ] player strategy
 
