@@ -9,7 +9,7 @@ public class OthelloWettkampf {
 		List<OthelloSpieler> spieler = new ArrayList<OthelloSpieler>();
 		
 		spieler.add(new spieler.Referenzspieler(9));
-		spieler.add(new spieler.Referenzspieler(9));
+		spieler.add(new spieler.Referenzspieler(1));
 		
 		new rahmen.OthelloArena(150, spieler, false);
 	}
