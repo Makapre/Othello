@@ -1,11 +1,11 @@
 # Othello
-##Decription
+## Decription
 
 Othello Eclipse project ISY
 
 
 
-### To DO
+### To Do
 
 - [ ] player strategy
 
