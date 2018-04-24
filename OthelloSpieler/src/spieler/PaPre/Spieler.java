@@ -6,34 +6,55 @@ import spieler.Zug;
 import spieler.ZugException;
 
 public class Spieler implements OthelloSpieler{
+	
+	private static final int BLACK = -1;
+	private static final int WHITE = 1;
+	private static final int empty = 0;
+	private static final int Board_Rows_Columns = 8;
+	
+	private int [][]board = new int[Board_Rows_Columns][Board_Rows_Columns];
+	private int color;
+	
+	
+	/**
+	 * initialisierung Board mit Startaufstellung
+	 */
+	private void initBoard() {
+		this.board[3][3] = 1;
+		this.board[3][4] = -1;
+		this.board[4][3] = -1;
+		this.board[4][4] = 1;
+	}
 
 	/**
 	* Ein neues Spiel ist zu starten. Bringen Sie das
 	* Spielbrett in die Ausgangsposition und merken Sie sich
 	* Ihre Farbe. Der Parameter bedenkzeitInSekunden gibt an,
 	* wie viel Bedenkzeit Ihrer Maschine insgesamt zur
-	* Verfügung steht (für alle Züge zusammen).
-	* @param meineFarbe
-	* @param bedenkzeitInSekunden
+	* Verfï¿½gung steht (fï¿½r alle Zï¿½ge zusammen).
+	* @param color
+	* @param thinkTime
 	*/
 	@Override
-	public void neuesSpiel(Farbe arg0, int arg1) {
-		// TODO Neues Spiel beginnen; 
-		//beachten Sie die Anfangsbelegung des Spielbretts!
-		
+	public void neuesSpiel(Farbe color, int thinkTime) {
+		if(color == Farbe.WEISS)
+			this.color = WHITE;
+		else
+			this.color = BLACK;
+		initBoard();
 	}
 	
 	/**
 	* Ihr Spieler muss den berechneten Zug als Zug-Objekt
-	* zurückgeben. Zug-Objekte sind ein Paar (Zeile,Spalte).
+	* zurï¿½ckgeben. Zug-Objekte sind ein Paar (Zeile,Spalte).
 	* Das erste Element sitzt oben links und hat den Wert
 	* (0,0). Das zweite Element der ersten Zeile
 	* dementsprechend (0,1). Das letzte Element unten rechts
-	* hat den Wert (7,7). Wenn Sie passen müssen, liefern Sie
-	* bitte Zug.setPassen() zurück. Sollte die Berechnung eines Zuges
-	* nicht möglich sein (z.B. weil der vorhergehende Zug aus
+	* hat den Wert (7,7). Wenn Sie passen mï¿½ssen, liefern Sie
+	* bitte Zug.setPassen() zurï¿½ck. Sollte die Berechnung eines Zuges
+	* nicht mï¿½glich sein (z.B. weil der vorhergehende Zug aus
 	* Sicht Ihrer Berechnung falsch ist, so werfen Sie bitte
-	* eine ZugException. Wenn Sie als Erster ziehen dürfen,
+	* eine ZugException. Wenn Sie als Erster ziehen dï¿½rfen,
 	* ist vorherigerZug == null
 	* In zeitWeiss bzw. zeitSchwarz wird die bislang verbrauchte
 	* Zeit des weissen bzw. schwarzen Spielers in ms angegeben.
@@ -45,17 +66,19 @@ public class Spieler implements OthelloSpieler{
 	}
 
 	/**
-	* Liefert den Namen Ihres Spielers zurück
+	* Liefert den Namen Ihres Spielers zurueck
 	*/
 	@Override
 	public String meinName() {
-		// TODO Auto-generated method stub
-		return null;
+		/*
+		 * Gibt Grupennamen zurÃ¼ck
+		 */
+		return "HoeRePaPre";
 	}
 	
 	
 	/**
-	 * Konstruktor für Othello-Spieler mit Default-Suchtiefe
+	 * Konstruktor fï¿½r Othello-Spieler mit Default-Suchtiefe
 	 */
 	public Spieler() {
 		
